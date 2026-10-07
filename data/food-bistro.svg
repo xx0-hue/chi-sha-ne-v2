@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">创意融合菜示意图</title><desc id="desc">安静餐桌上的创意融合菜</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b5c3a1"/><stop offset="1" stop-color="#6a7867"/></linearGradient></defs>
+  <rect width="800" height="520" fill="url(#bg)"/><ellipse cx="400" cy="300" rx="205" ry="128" fill="#f7f0df"/><path d="M291 318c58-91 103-92 144-4 37-43 61-30 84 9" fill="none" stroke="#bd6946" stroke-width="27" stroke-linecap="round"/><circle cx="350" cy="245" r="18" fill="#d89e4e"/><circle cx="474" cy="348" r="17" fill="#779263"/><path d="M278 367c84 30 160 31 246-4" fill="none" stroke="#d8c5a0" stroke-width="10" stroke-linecap="round"/><text x="34" y="72" fill="#fff8ea" font-family="sans-serif" font-size="30" font-weight="700">创意融合</text>
+</svg>

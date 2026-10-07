@@ -396,9 +396,9 @@ assistantSheet.addEventListener("click", event => {
 });
 locateButton.addEventListener("click", event => {
   event.stopPropagation();
-  realMapInitialized ? requestCurrentLocation() : initRealMap();
+  realMapInitialized ? requestCurrentLocation() : initRealMap({ requestLocation: true });
 });
-mapRetryButton.addEventListener("click", () => realMapInitialized ? requestCurrentLocation() : initRealMap());
+mapRetryButton.addEventListener("click", () => realMapInitialized ? requestCurrentLocation() : initRealMap({ requestLocation: true }));
 workspace.addEventListener("transitionend", event => {
   if (event.propertyName === "grid-template-rows") scheduleMapResize();
 });
@@ -416,7 +416,7 @@ function setMapState(state, message) {
   mapStatusText.textContent = message;
   mapStatus.hidden = state === "ready";
   mapRetryButton.hidden = state !== "error";
-  mapBadge.textContent = state === "ready" ? "已定位" : state === "error" ? "定位失败" : "定位中";
+  mapBadge.textContent = state === "ready" ? "已定位" : state === "idle" ? "未定位" : state === "error" ? "定位失败" : "定位中";
 }
 
 function mapErrorMessage(error) {
@@ -426,12 +426,13 @@ function mapErrorMessage(error) {
   return error?.message || "暂时无法获取你的位置，请稍后重试";
 }
 
-async function initRealMap() {
+async function initRealMap({ requestLocation = false } = {}) {
   setMapState("loading", "正在加载地图…");
   try {
     await window.NearbyFoodMap.init(mapCanvas, window.NEARBY_FOOD_MAP_CONFIG);
     realMapInitialized = true;
-    await requestCurrentLocation();
+    if (requestLocation) await requestCurrentLocation();
+    else setMapState("idle", "地图已准备好，点击右下角定位附近餐厅");
   } catch (error) {
     setMapState("error", mapErrorMessage(error));
   }

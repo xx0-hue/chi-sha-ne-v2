@@ -16,7 +16,7 @@ window.NEARBY_FOOD_RESTAURANTS = [
     features: ["quiet", "elder", "convenient"],
     isMock: true,
     location: { lng: 121.4765, lat: 31.2314 },
-    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=82",
+    image: "./data/food-noodles.svg",
     marker: { x: 29, y: 34 }
   },
   {
@@ -34,7 +34,7 @@ window.NEARBY_FOOD_RESTAURANTS = [
     features: ["parking", "elder", "children", "pregnant", "privateRoom", "groupSeating", "convenient"],
     isMock: true,
     location: { lng: 121.4692, lat: 31.2329 },
-    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=82",
+    image: "./data/food-kitchen.svg",
     marker: { x: 68, y: 25 }
   },
   {
@@ -52,7 +52,7 @@ window.NEARBY_FOOD_RESTAURANTS = [
     features: ["parking", "privateRoom", "groupSeating", "convenient"],
     isMock: true,
     location: { lng: 121.4802, lat: 31.2266 },
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=82",
+    image: "./data/food-hotpot.svg",
     marker: { x: 76, y: 65 }
   },
   {
@@ -70,7 +70,7 @@ window.NEARBY_FOOD_RESTAURANTS = [
     features: ["quiet", "pregnant", "environment"],
     isMock: true,
     location: { lng: 121.4647, lat: 31.2249 },
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=82",
+    image: "./data/food-bistro.svg",
     marker: { x: 41, y: 72 }
   }
 ];

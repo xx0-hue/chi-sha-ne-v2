@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">番茄牛腩手擀面示意图</title><desc id="desc">暖色餐桌上的一碗手工面</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2b477"/><stop offset="1" stop-color="#bd5b39"/></linearGradient></defs>
+  <rect width="800" height="520" fill="url(#bg)"/><circle cx="400" cy="280" r="150" fill="#fff0d5"/><circle cx="400" cy="280" r="121" fill="#d97943"/><path d="M304 267c45-64 148-62 194 4M318 316c51 40 111 39 164-2M349 220c8 72 17 130 45 171M447 219c-17 66-16 124-49 172" fill="none" stroke="#f8dfae" stroke-width="13" stroke-linecap="round"/><circle cx="355" cy="257" r="18" fill="#7f9b53"/><circle cx="456" cy="292" r="20" fill="#8da85b"/><text x="34" y="72" fill="#fff8ea" font-family="sans-serif" font-size="30" font-weight="700">手工面</text>
+</svg>

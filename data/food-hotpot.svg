@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">川味小火锅示意图</title><desc id="desc">热气腾腾的小火锅示意图</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ef9c55"/><stop offset="1" stop-color="#a84135"/></linearGradient></defs>
+  <rect width="800" height="520" fill="url(#bg)"/><path d="M330 160c-32-65 33-76 4-126M414 164c-30-70 42-79 10-136M493 171c-13-66 57-75 26-130" fill="none" stroke="#ffe6b2" stroke-width="16" stroke-linecap="round" opacity=".85"/><ellipse cx="410" cy="332" rx="205" ry="88" fill="#5a3427"/><ellipse cx="410" cy="305" rx="177" ry="73" fill="#d35832"/><path d="M283 311c56-55 96 35 143-14s77 41 119-12" fill="none" stroke="#f6c85e" stroke-width="18" stroke-linecap="round"/><circle cx="352" cy="289" r="12" fill="#86a258"/><circle cx="472" cy="318" r="13" fill="#86a258"/><text x="34" y="72" fill="#fff8ea" font-family="sans-serif" font-size="30" font-weight="700">小火锅</text>
+</svg>
