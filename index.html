@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f3ea">
+  <title>吃啥呢 V2</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell" aria-label="吃啥呢首页">
+    <header class="topbar">
+      <div class="brand-row">
+        <div>
+          <p class="eyebrow">今天，也要好好吃饭</p>
+          <h1>吃啥呢</h1>
+        </div>
+        <div class="user-area">
+          <button class="icon-button user-button" id="userButton" type="button" aria-label="打开用户菜单" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"/></svg>
+          </button>
+          <nav class="user-menu" id="userMenu" aria-label="用户菜单" hidden>
+            <div class="guest-note"><b>先逛逛也可以</b><small>登录后可同步收藏与记录</small></div>
+            <button type="button"><span>登录</span><small>选填</small></button>
+            <button type="button" data-user-action="favorites"><span>我的收藏</span><small id="favoriteCount">0 家</small></button>
+            <button type="button" data-user-action="history"><span>历史记录</span><small id="historyCount">0 家</small></button>
+            <button type="button"><span>设置</span><small>偏好与隐私</small></button>
+          </nav>
+        </div>
+      </div>
+
+      <label class="search-box" for="searchInput">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+        <input id="searchInput" type="search" placeholder="想吃点什么？" autocomplete="off">
+        <button id="clearSearch" type="button" aria-label="清空搜索" hidden>×</button>
+      </label>
+    </header>
+
+    <section class="workspace" id="workspace" data-focus="balanced">
+      <section class="map-panel" id="mapPanel" tabindex="0" aria-label="真实地图，点击放大地图区域">
+        <div class="map-toolbar">
+          <div>
+            <p class="section-kicker">当前位置</p>
+            <h2>看看你在哪里</h2>
+          </div>
+          <span class="mock-label" id="mapBadge">定位中</span>
+        </div>
+
+        <div class="map-frame">
+          <div class="map-canvas" id="mapCanvas" aria-label="高德地图"></div>
+          <div class="map-status" id="mapStatus" role="status" aria-live="polite">
+            <span class="map-status-spinner" aria-hidden="true"></span>
+            <p id="mapStatusText">正在加载地图…</p>
+            <button type="button" id="mapRetryButton" hidden>重新定位</button>
+          </div>
+          <button class="locate-button" type="button" id="locateButton" aria-label="回到当前位置">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>
+          </button>
+        </div>
+        <div id="mapMarkers" hidden></div>
+      </section>
+
+      <section class="list-panel" id="listPanel" tabindex="0" aria-label="餐厅列表，点击放大列表区域">
+        <div class="list-header">
+          <div>
+            <p class="section-kicker">为你筛选</p>
+            <h2><span id="resultCount">0</span> 家值得看看</h2>
+          </div>
+          <button class="filter-button" type="button" id="filterButton" aria-label="切换餐厅排序">距离优先</button>
+        </div>
+        <div class="restaurant-list" id="restaurantList" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <h3>附近暂时没找到</h3>
+          <p>换个菜系或清空搜索再看看。</p>
+        </div>
+      </section>
+    </section>
+
+    <div class="decision-bar">
+      <button class="decision-button" id="decisionButton" type="button">
+        <span class="dice" aria-hidden="true">🎲</span>
+        <span><b>帮我决定一家</b><small>不知道吃什么？我帮你选</small></span>
+      </button>
+    </div>
+
+    <button class="assistant-button" id="assistantButton" type="button" aria-label="打开吃饭小助手">
+      <span class="rice-ball" aria-hidden="true"><i></i></span>
+    </button>
+
+    <aside class="assistant-sheet" id="assistantSheet" aria-label="小饭饭助手" hidden>
+      <div class="assistant-heading">
+        <div class="assistant-identity"><span class="rice-ball small" aria-hidden="true"><i></i></span><div><small>小饭饭助手</small><h2>你好，我是饭饭～</h2></div></div>
+        <button id="closeAssistant" type="button" aria-label="关闭小饭饭助手">×</button>
+      </div>
+      <div id="assistantHome">
+        <p class="assistant-welcome">今天不知道吃什么？交给我吧。</p>
+        <div class="assistant-actions assistant-entry-list">
+          <button class="assistant-entry-primary" type="button" data-action="quick"><span>🎲 饭饭帮我选一个</span><small>不想补充条件，先从当前候选看一家</small></button>
+          <button class="assistant-entry-secondary" type="button" data-action="express"><span>😴 懒得选？告诉饭饭</span><small>有自己的想法，用一句话告诉我</small></button>
+          <button class="assistant-entry-guide" type="button" data-action="tutorial"><span>👋 看看怎么玩</span><small>跟着饭饭快速看一遍</small></button>
+        </div>
+      </div>
+      <div class="assistant-dynamic" id="assistantDynamic" hidden></div>
+    </aside>
+
+    <div class="onboarding-overlay" id="onboardingOverlay" hidden>
+      <div class="onboarding-spotlight" id="onboardingSpotlight"></div>
+      <section class="onboarding-tip" id="onboardingTip" aria-live="polite">
+        <small id="onboardingCount">1 / 4</small>
+        <h2 id="onboardingTitle"></h2>
+        <p id="onboardingText"></p>
+        <div><button type="button" id="skipOnboarding">跳过</button><button type="button" id="nextOnboarding">下一步</button></div>
+      </section>
+    </div>
+
+    <section class="decision-flow" id="decisionFlow" aria-label="饭饭帮你决定" aria-modal="true" role="dialog" hidden>
+      <header class="flow-header">
+        <button class="flow-close" id="closeDecisionFlow" type="button" aria-label="关闭并返回地图首页">×</button>
+        <div class="flow-context">
+          <div class="flow-context-title"><span class="rice-ball tiny" aria-hidden="true"><i></i></span><b id="flowStepLabel">饭饭帮你选 · 1/5</b></div>
+          <div class="flow-progress" aria-hidden="true"><span id="flowProgressBar"></span></div>
+        </div>
+        <span class="flow-close-hint">随时可关闭</span>
+      </header>
+      <main class="flow-stage" id="flowStage" aria-live="polite"></main>
+      <footer class="flow-footer" id="flowFooter">
+        <button class="flow-back" id="flowBack" type="button">返回</button>
+        <button class="flow-early" id="flowEarly" type="button" hidden>现在就帮我选</button>
+        <button class="flow-next" id="flowNext" type="button">就这样</button>
+      </footer>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="./map-config.js"></script>
+  <script src="./map.js"></script>
+  <script src="./data/restaurants.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
